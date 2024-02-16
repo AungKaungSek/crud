@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/admin :: headLink"></head>
+<body>
+	<!--wrapper-->
+	<div class="wrapper">
+		<div class="sidebar-wrapper" data-simplebar="true">
+			<div class="sidebar-header">
+				<div>
+					<img src="assets/images/logo-icon.png" class="logo-icon"
+						alt="logo icon">
+				</div>
+				<div>
+					<h4 class="logo-text">E-Commerce</h4>
+				</div>
+				<div class="toggle-icon ms-auto"></div>
+			</div>
+			<ul class="metismenu" id="menu" th:replace="layout/admin :: sidebar"></ul>
+			</li>
+			</ul>
+		</div>
+		<!--end sidebar wrapper -->
+		<!--start header -->
+		<header th:replace="layout/admin :: headerSection"></header>
+		<!--end header -->
+
+
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+    <div class="page-content">
+        <div class="row row-cols-1 row-cols-md-4 row-cols-xl-8">
+            <div class="col-lg-4" th:each="teacherCourse: ${teacherCourses}">
+                <div class="card h-100 radius-10 border-start border-0 border-4 border-info">
+                    <a th:href="@{/teacherCourseStudents/viewDetail(id=${teacherCourse.id})}" class="d-block h-100">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <p class="mb-0 text-secondary" th:text="${teacherCourse.name}"></p>
+                                <h4 class="my-1 text-info" th:text="${teacherCourse.courses.name}"></h4>
+                            </div>
+                            <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white">
+                                <i class='bx bx-book'></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+		<div th:include="layout/adminfooter"></div>
